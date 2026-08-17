@@ -1,0 +1,63 @@
+{
+    "autenticacao": {
+        "userSecurity": "utilizador",
+        "userAplicacao": "APP01"
+    },
+
+    "operacao": "I",
+
+    "pin": "123456",
+
+    "identificacao": {
+        "nomeCompleto": "João da Silva",
+        "nomeClinico": "João Silva",
+        "dataNascimento": "1980-01-01",
+        "sexo": "M",
+        "cedula": "12345"
+    },
+
+    "profissao": {
+        "especialidade": {
+            "codigo": "001",
+            "descricao": "Cardiologia"
+        },
+
+        "categoria": {
+            "codigo": "MED",
+            "descricao": "Médico"
+        },
+
+        "situacao": "ATIVO",
+        "dataSituacao": "2026-08-05"
+    },
+
+    "contactos": {
+        "telemovel": "912345678",
+        "email": "teste@teste.pt"
+    },
+
+    "morada": {
+        "rua": "Rua A",
+
+        "distrito": {
+            "codigo": "11",
+            "descricao": "Lisboa"
+        },
+
+        "concelho": {
+            "codigo": "1106",
+            "descricao": "Lisboa"
+        },
+
+        "freguesia": {
+            "codigo": "110618",
+            "descricao": "Alvalade"
+        },
+
+        "codigoPostal": "1700",
+        "seqPostal": "001",
+        "localidade": "Lisboa"
+    },
+
+    "dataInscricaoOrdem": "2005-01-01"
+}

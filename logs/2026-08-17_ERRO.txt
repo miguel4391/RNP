@@ -1,0 +1,1 @@
+[17/08/2026, 09:57:30] [profissional: 12345] Resultado: {"sucesso":false,"estado":"ERRO_SPMS","mensagem":"Não foi possível comunicar com o Web Service RNP.","requestId":"4bdd55e7-13a4-4fa1-9417-73161d70ed65"}
