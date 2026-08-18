@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { XMLParser } = require("fast-xml-parser");
 const { criarXmlSoap } = require("../soap/rnpXml");
+const { obterAccessToken } = require('./tokenService');
 
 
 
@@ -23,6 +24,21 @@ async function enviarProfissional(profissional, requestId) {
     if (process.env.RNP_SOAP_ACTION) {
         headers["SOAPAction"] = process.env.RNP_SOAP_ACTION;
     }
+
+
+    const accessToken = await obterAccessToken();
+
+    // Envia o pedido para o Web Service RNP a solicitar o token de acesso. O token é incluído no cabeçalho Authorization.
+    const response = await axios.post(
+        RNP_URL,
+        xml,
+        {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/xml'
+            }
+        }
+    );
 
     try {
         const response = await axios.post(
