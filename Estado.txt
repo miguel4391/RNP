@@ -1,0 +1,36 @@
+Completo está:
+ProfissionalMapper.js
+rnpServics.js
+tokenService.js
+
+aguarda código
+utils/logger.js e config/rnp.js
+
+estrutura final
+
+
+projeto/
+│
+├── app.js
+├── routes/
+│   └── rnp.js
+│
+├── services/
+│   ├── tokenService.js
+│   ├── rnpService.js
+│   └── profissionalMapper.js
+│
+├── models/
+│   └── ...
+│
+├── config/
+│   └── rnp.js
+│
+├── utils/
+│   └── logger.js
+│
+├── logs/
+│   └── 2026-08-19.log
+│
+└── data/
+    └── profissional.json       ← apenas para testes
