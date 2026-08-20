@@ -2,9 +2,8 @@ Completo está:
 ProfissionalMapper.js
 rnpServics.js
 tokenService.js
-
-aguarda código
-utils/logger.js e config/rnp.js
+config/rnp.js
+utils/logger.js 
 
 estrutura final
 

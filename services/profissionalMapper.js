@@ -168,7 +168,7 @@ function qualificationCode(id, code, display) {
  * Constrói a extension qualificationPTExtension.
  */
 function buildQualificationExtension(r) {
-
+    
     const extensions = [];
 
     // --------------------------------------------------------
@@ -275,7 +275,7 @@ function buildQualificationExtension(r) {
 // ============================================================
 
 function buildPractitioner(r, practitionerId) {
-
+    
     const identifier = {
         type: {
             coding: [
@@ -288,11 +288,12 @@ function buildPractitioner(r, practitionerId) {
             text: "Número da Cédula Profissional do Médico"
         },
         system: "https://ordemdosmedicos.pt/pt",
-        value: String(r.cedula),
+        value: String(r.nrCedula),
         period: {
             start:
                 formatDate(r.dataInscricaoOrdem) ||
                 formatDate(r.dataInicioCedula)
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         }
     };
 
@@ -358,7 +359,7 @@ function buildPractitioner(r, practitionerId) {
     // Competência
     // --------------------------------------------------------
 
-    if (
+    /* if (
         r.competenciaCodigo ||
         r.competenciaDescricao
     ) {
@@ -370,7 +371,7 @@ function buildPractitioner(r, practitionerId) {
                 r.competenciaDescricao
             )
         );
-    }
+    } */
 
 
     return removeEmpty({
@@ -403,12 +404,21 @@ function buildPractitioner(r, practitionerId) {
 
         name: [
             {
-                use: "official",
-                text: r.nomeCompleto
+                use: "usual",
+                text: r.nome
             }
         ],
 
-        birthDate: formatDate(r.dataNascimento),
+        telecom:[
+            {
+                system: "email",
+                value: r.email,
+                use: "work",
+                rank: 1
+            }
+        ],
+
+        birthDate: formatDate(r.dtaNasc),
 
         qualification
     });

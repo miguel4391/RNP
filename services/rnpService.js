@@ -1,3 +1,4 @@
+const axios = require("axios");
 const tokenService = require("./tokenService");
 
 async function enviarParaSPMS(bundle) {
@@ -17,3 +18,7 @@ async function enviarParaSPMS(bundle) {
 
     return response.data;
 }
+
+module.exports = {
+    enviarParaSPMS
+};

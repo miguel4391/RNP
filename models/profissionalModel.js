@@ -80,7 +80,7 @@ async function getProfissional(idProfissional) {
     //}
 
     //const r = rows[0];
-    const r = require("../profissional.json"); // Simulação de dados para teste
+    const r = require("../data/profissional.json"); // Simulação de dados para teste
     return r;
     //console.log("Dados do profissional:", r);
     /* return {

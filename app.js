@@ -1,7 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const profissionalRoutes = require("./routes/profissional");
+//const profissionalRoutes = require("./routes/profissional");
+const rnpRoutes = require("./routes/rnp");
 const { errorHandler } = require("./middleware/errorHandler");
 
 const app = express();
@@ -16,7 +17,8 @@ app.get("/health", (req, res) => {
     });
 });
 
-app.use("/routes", profissionalRoutes);
+//app.use("/routes", profissionalRoutes);
+app.use("/routes", rnpRoutes);
 
 app.use(errorHandler);
 

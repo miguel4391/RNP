@@ -42,7 +42,7 @@ POST /routes/profissional/:id Content-Type: application/json X-API-Key: local-de
 Exemplo:
 
 ```bash
-curl -X POST http://localhost:8080/routes/profissional/12345 -H "X-API-Key: local-de-acesso-restrito"
+curl -X POST http://localhost:8080/routes/rnp/12345 -H "X-API-Key: local-de-acesso-restrito"
 ```
 
 Resposta de sucesso:
