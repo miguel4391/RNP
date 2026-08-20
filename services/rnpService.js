@@ -6,7 +6,7 @@ async function enviarParaSPMS(bundle) {
     const token = await tokenService.obterAccessToken();
 
     const response = await axios.post(
-        process.env.RNP_BUNDLE_URL,
+        process.env.RNP_URL,
         bundle,
         {
             headers: {
