@@ -3,6 +3,7 @@
     "email": "joao.silva@example.com",
     "dataNascimento": "1980-01-01",
     "nrCedula": "12345",
+    "nif": "123456789",
     "especialidades": [
         {
             "especialidadeCodigo": "394579002",
@@ -14,5 +15,34 @@
             "especialidadeDescricaoEng": "Dermatology",
             "especialidadeDescricao": "Dermato-venereologia"
         }
-    ]
+    ],
+    "subespecialidades": [
+        {
+            "subespecialidadeCodigo": "394579002",
+            "subespecialidadeDescricaoEng": "Cardiologia",
+            "especialidadeDescricao": "Cardiology"
+        },
+        {
+            "subespecialidadeCodigo": "394582007",
+            "subespecialidadeDescricaoEng": "Dermatology",
+            "especialidadeDescricao": "Dermato-venereologia"
+        }
+    ],
+    "competencias": [
+        {
+            "competenciaCodigo": "394579002",
+            "competenciaDescricaoEng": "Cardiologia",
+            "competenciaDescricao": "Cardiology"
+        },
+        {
+            "competenciaCodigo": "394582007",
+            "competenciaDescricaoEng": "Dermatology",
+            "competenciaDescricao": "Dermato-venereologia"
+        }
+    ],
+    "tituloProfissional": {
+        "tituloCodigo": "394579002",
+        "tituloDescricaoEng": "Physician",
+        "tituloDescricao": "Médico"
+    }
 }
