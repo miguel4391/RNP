@@ -3,6 +3,10 @@
     "email": "joao.silva@example.com",
     "dataNascimento": "1980-01-01",
     "nrCedula": "12345",
+    "dataCedula":{
+        "dataInicioCedula": "2010-01-01",
+        "dataFimCedula": "2025-01-01"
+    },
     "nif": "123456789",
     "especialidades": [
         {

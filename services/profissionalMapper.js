@@ -292,8 +292,8 @@ function buildPractitioner(r, practitionerId) {
         period: {
             start:
                 formatDate(r.dataInscricaoOrdem) ||
-                formatDate(r.dataInicioCedula)
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                formatDate(r.dataInicioCedula),
+            end: formatDate(r.dataFimCedula)
         }
     };
 
@@ -620,7 +620,7 @@ function buildBundle(r) {
     const senderOrganization =
         buildOrganization({
             id: senderOrganizationId,
-            nif: process.env.RNP_SENDER_NIF,
+            nif: process.env.x,
             nome: senderOrganizationName
         });
 

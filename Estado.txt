@@ -20,7 +20,7 @@ projeto/
 │   └── profissionalMapper.js
 │
 ├── models/
-│   └── ...
+│   └── profissionalModel.js         (Está só a importar um json com dados dummy. É necessário ir buscar os dados à BD)
 │
 ├── config/
 │   └── rnp.js

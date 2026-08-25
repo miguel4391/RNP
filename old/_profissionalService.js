@@ -1,6 +1,6 @@
 const profissionalModel = require("../models/profissionalModel");
 const { validarProfissional } = require("../validation/profissionalValidation");
-const rnpService = require("./rnpService");
+const rnpService = require("../services/rnpService");
 
 async function processar(idProfissional, requestId) {
 

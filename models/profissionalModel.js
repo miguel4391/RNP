@@ -83,69 +83,54 @@ async function getProfissional(idProfissional) {
     const r = require("../data/profissional.json"); // Simulação de dados para teste
     return r;
     //console.log("Dados do profissional:", r);
-    /* return {
-        autenticacao: {
-            userSecurity: process.env.RNP_USER_SECURITY,
-            userAplicacao: process.env.RNP_USER_APLICACAO
-        },
-
-        operacao: r.operacao || "U",
-
-        pin: r.pin,
-
-        identificacao: {
-            nomeCompleto: r.nomeCompleto,
-            nomeClinico: r.nomeClinico,
-            dataNascimento: formatDate(r.dataNascimento),
-            sexo: r.sexo,
-            cedula: r.cedula
-        },
-
-        profissao: {
-            especialidade: {
-                codigo: r.especialidadeCodigo,
-                descricao: r.especialidadeDescricao
+    /* return {    
+        nome: r.nome,
+        email: r.email,
+        dataNascimento: r.dtaNasc,
+        nrCedula: r.nrCedula,
+        nif: r.nif,
+        "especialidades": [
+            {
+                "especialidadeCodigo": "394579002",
+                "especialidadeDescricaoEng": "Cardiologia",
+                "especialidadeDescricao": "Cardiology"
             },
-
-            categoria: {
-                codigo: r.categoriaCodigo,
-                descricao: r.categoriaDescricao
+            {
+                "especialidadeCodigo": "394582007",
+                "especialidadeDescricaoEng": "Dermatology",
+                "especialidadeDescricao": "Dermato-venereologia"
+            }
+        ],
+        "subespecialidades": [
+            {
+                "subespecialidadeCodigo": "394579002",
+                "subespecialidadeDescricaoEng": "Cardiologia",
+                "especialidadeDescricao": "Cardiology"
             },
-
-            situacao: r.situacao,
-            dataSituacao: formatDate(r.dataSituacao)
-        },
-
-        contactos: {
-            telemovel: r.telemovel,
-            email: r.email
-        },
-
-        morada: {
-            rua: r.rua,
-
-            distrito: {
-                codigo: r.distritoCodigo,
-                descricao: r.distritoDescricao
+            {
+                "subespecialidadeCodigo": "394582007",
+                "subespecialidadeDescricaoEng": "Dermatology",
+                "especialidadeDescricao": "Dermato-venereologia"
+            }
+        ],
+        "competencias": [
+            {
+                "competenciaCodigo": "394579002",
+                "competenciaDescricaoEng": "Cardiologia",
+                "competenciaDescricao": "Cardiology"
             },
-
-            concelho: {
-                codigo: r.concelhoCodigo,
-                descricao: r.concelhoDescricao
-            },
-
-            freguesia: {
-                codigo: r.freguesiaCodigo,
-                descricao: r.freguesiaDescricao
-            },
-
-            codigoPostal: r.codigoPostal,
-            seqPostal: r.seqPostal,
-            localidade: r.localidade
-        },
-
-        dataInscricaoOrdem: formatDate(r.dataInscricaoOrdem)
-    }; */
+            {
+                "competenciaCodigo": "394582007",
+                "competenciaDescricaoEng": "Dermatology",
+                "competenciaDescricao": "Dermato-venereologia"
+            }
+        ],
+        "tituloProfissional": {
+            "tituloCodigo": "394579002",
+            "tituloDescricaoEng": "Physician",
+            "tituloDescricao": "Médico"
+        }
+    } */
 }
 
 function formatDate(value) {
