@@ -1,8 +1,8 @@
-   {
-    "resourceType": "Bundle",
-   "id": "256838be-2ed4-4808-9396-e31515905ef2",
+{
+   "resourceType": "Bundle",
+   "id": "06e6a891-e950-4223-9b48-e18ca85b1536",
    "meta": {
-     "lastUpdated": "2026-08-25T15:57:41.243Z",
+     "lastUpdated": "2026-08-26T16:42:12.910Z",
      "profile": [
        "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/BundlePTTRV"
      ]
@@ -10,12 +10,12 @@
    "type": "message",
    "entry": [
      {
-       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/MessageHeader/e7e01b1b-908b-4f78-ac2f-b86a6685ca4b",
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/MessageHeader/8bb6303e-ba6e-4ac7-b259-c3020f4d15f3",
        "resource": {
          "resourceType": "MessageHeader",
-         "id": "e7e01b1b-908b-4f78-ac2f-b86a6685ca4b",
+         "id": "8bb6303e-ba6e-4ac7-b259-c3020f4d15f3",
          "meta": {
-           "lastUpdated": "2026-08-25T15:57:41.242Z",
+           "lastUpdated": "2026-08-26T16:42:12.910Z",
            "profile": [
              "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/MessageHeaderPTTRV"
            ]
@@ -45,16 +45,16 @@
          },
          "focus": [
            {
-             "reference": "Practitioner/26148204-1432-4ae4-a1d7-7a60c3e03615"
+             "reference": "Practitioner/81d5452a-a8fa-40e9-ba79-43876bf5fe45"
            }
          ]
        }
      },
      {
-       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/Practitioner/26148204-1432-4ae4-a1d7-7a60c3e03615",
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/Practitioner/81d5452a-a8fa-40e9-ba79-43876bf5fe45",
        "resource": {
          "resourceType": "Practitioner",
-         "id": "26148204-1432-4ae4-a1d7-7a60c3e03615",
+         "id": "81d5452a-a8fa-40e9-ba79-43876bf5fe45",
          "meta": {
            "profile": [
              "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/PractitionerPTOPSNC"
@@ -91,6 +91,7 @@
              "rank": 1
            }
          ],
+         "birthDate": "1980-01-01",
          "qualification": [
            {
              "extension": [
@@ -136,7 +137,7 @@
          "resourceType": "Organization",
          "id": "Organization/SPMS",
          "meta": {
-           "lastUpdated": "2026-08-25T15:57:41.243Z",
+           "lastUpdated": "2026-08-26T16:42:12.910Z",
            "profile": [
              "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
            ]
@@ -166,7 +167,7 @@
          "resourceType": "Organization",
          "id": "Organization/OM",
          "meta": {
-           "lastUpdated": "2026-08-25T15:57:41.243Z",
+           "lastUpdated": "2026-08-26T16:42:12.910Z",
            "profile": [
              "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
            ]

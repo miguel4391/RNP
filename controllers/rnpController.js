@@ -28,7 +28,7 @@ async function enviarProfissional(req, res) {
 
         const profissional =
             await profissionalModel.getProfissional(idProfissional);
-
+        console.log("Dados do profissional obtidos:", profissional);
         if (!profissional) {
 
             return res.status(404).json({

@@ -330,7 +330,8 @@ function buildPractitioner(r, practitionerId) {
             qualificationCode(
                 "medicalSpecialty",
                 r.especialidadeCodigo,
-                r.especialidadeDescricao
+                r.especialidadeDescricao,
+                r.especialidadeDescricaoEng
             )
         );
     }
@@ -349,7 +350,8 @@ function buildPractitioner(r, practitionerId) {
             qualificationCode(
                 "medicalSubSpecialty",
                 r.subEspecialidadeCodigo,
-                r.subEspecialidadeDescricao
+                r.subEspecialidadeDescricao,
+                r.subEspecialidadeDescricaoEng
             )
         );
     }
@@ -368,7 +370,8 @@ function buildPractitioner(r, practitionerId) {
             qualificationCode(
                 "medicalCompetence",
                 r.competenciaCodigo,
-                r.competenciaDescricao
+                r.competenciaDescricao,
+                r.competenciaDescricaoEng
             )
         );
     } */
@@ -620,7 +623,7 @@ function buildBundle(r) {
     const senderOrganization =
         buildOrganization({
             id: senderOrganizationId,
-            nif: process.env.x,
+            nif: process.env.RNP_SENDER_NIF,
             nome: senderOrganizationName
         });
 
