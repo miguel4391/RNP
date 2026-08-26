@@ -1,181 +1,194 @@
-{
+   {
     "resourceType": "Bundle",
-    "id": "c76ff44d-a10f-4b22-b3d0-aa9a4a78de57",
-    "meta": {
-        "lastUpdated": "2026-08-24T11:48:07.394Z",
-        "profile": [
-            "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/BundlePTTRV"
-        ]
-    },
-    "type": "message",
-    "entry": [
-        {
-            "fullUrl": "https://spms.min-saude.pt/fhir-r4B/MessageHeader/8fe2f1a4-546e-4109-acbf-fef4892b9643",
-            "resource": {
-                "resourceType": "MessageHeader",
-                "id": "8fe2f1a4-546e-4109-acbf-fef4892b9643",
-                "meta": {
-                    "lastUpdated": "2026-08-24T11:48:07.392Z",
-                    "profile": [
-                        "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/MessageHeaderPTTRV"
-                    ]
-                },
-                "eventCoding": {
-                    "system": "https://spms.min-saude.pt/fhir-r4B/iop/events"
-                },
-                "destination": [
-                    {
-                        "name": "sistema-nacional",
-                        "receiver": {
-                            "reference": "Organization/undefined"
-                        }
-                    }
-                ],
-                "sender": {
-                    "reference": "Organization/undefined"
-                },
-                "focus": [
-                    {
-                        "reference": "Practitioner/072e1ca5-b3d5-4d9c-9bac-8729fe517cf3"
-                    }
-                ]
-            }
-        },
-        {
-            "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Practitioner/072e1ca5-b3d5-4d9c-9bac-8729fe517cf3",
-            "resource": {
-                "resourceType": "Practitioner",
-                "id": "072e1ca5-b3d5-4d9c-9bac-8729fe517cf3",
-                "meta": {
-                    "profile": [
-                        "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/PractitionerPTOPSNC"
-                    ]
-                },
-                "identifier": [
-                    {
-                        "type": {
-                            "coding": [
-                                {
-                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                                    "code": "MD",
-                                    "display": "Medical License number"
-                                }
-                            ],
-                            "text": "Número da Cédula Profissional do Médico"
-                        },
-                        "system": "https://ordemdosmedicos.pt/pt",
-                        "value": "12345"
-                    }
-                ],
-                "active": true,
-                "name": [
-                    {
-                        "use": "usual",
-                        "text": "João da Silva"
-                    }
-                ],
-                "telecom": [
-                    {
-                        "system": "email",
-                        "value": "joao.silva@example.com",
-                        "use": "work",
-                        "rank": 1
-                    }
-                ],
-                "qualification": [
-                    {
-                        "extension": [
-                            {
-                                "extension": [
-                                    {
-                                        "url": "status",
-                                        "valueCodeableConcept": {
-                                            "coding": [
-                                                {
-                                                    "system": "http://snomed.info/sct",
-                                                    "code": "255594003",
-                                                    "display": "Complete"
-                                                }
-                                            ],
-                                            "text": "Concluído"
-                                        }
-                                    }
-                                ],
-                                "url": "https://spms.min-saude.pt/fhir/iop/extensions/qualificationPTExtension"
-                            }
-                        ],
-                        "code": {
-                            "code": {
-                                "id": "professionalTitle",
-                                "coding": [
-                                    {
-                                        "system": "http://snomed.info/sct",
-                                        "code": "309343006",
-                                        "display": "Médico"
-                                    }
-                                ],
-                                "text": "Médico"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/undefined",
-            "resource": {
-                "resourceType": "Organization",
-                "meta": {
-                    "lastUpdated": "2026-08-24T11:48:07.394Z",
-                    "profile": [
-                        "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
-                    ]
-                },
-                "identifier": [
-                    {
-                        "type": {
-                            "coding": [
-                                {
-                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                                    "code": "TAX",
-                                    "display": "Tax ID Number"
-                                }
-                            ],
-                            "text": "Número de Identificação de Pessoa Coletiva"
-                        },
-                        "system": "https://www.portaldasfinancas.gov.pt",
-                        "value": "undefined"
-                    }
-                ]
-            }
-        },
-        {
-            "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/undefined",
-            "resource": {
-                "resourceType": "Organization",
-                "meta": {
-                    "lastUpdated": "2026-08-24T11:48:07.394Z",
-                    "profile": [
-                        "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
-                    ]
-                },
-                "identifier": [
-                    {
-                        "type": {
-                            "coding": [
-                                {
-                                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                                    "code": "TAX",
-                                    "display": "Tax ID Number"
-                                }
-                            ],
-                            "text": "Número de Identificação de Pessoa Coletiva"
-                        },
-                        "system": "https://www.portaldasfinancas.gov.pt",
-                        "value": "undefined"
-                    }
-                ]
-            }
-        }
-    ]
-}
+   "id": "256838be-2ed4-4808-9396-e31515905ef2",
+   "meta": {
+     "lastUpdated": "2026-08-25T15:57:41.243Z",
+     "profile": [
+       "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/BundlePTTRV"
+     ]
+   },
+   "type": "message",
+   "entry": [
+     {
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/MessageHeader/e7e01b1b-908b-4f78-ac2f-b86a6685ca4b",
+       "resource": {
+         "resourceType": "MessageHeader",
+         "id": "e7e01b1b-908b-4f78-ac2f-b86a6685ca4b",
+         "meta": {
+           "lastUpdated": "2026-08-25T15:57:41.242Z",
+           "profile": [
+             "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/MessageHeaderPTTRV"
+           ]
+         },
+         "eventCoding": {
+           "system": "https://spms.min-saude.pt/fhir-r4B/iop/events",
+           "code": "3303",
+           "display": "PRACTITIONER_SYNC"
+         },
+         "destination": [
+           {
+             "name": "RNP",
+             "endpoint": "SPMS/RNP",
+             "receiver": {
+               "reference": "Organization/SPMS",
+               "display": "Serviços Partilhados do Ministério da Saúde"
+             }
+           }
+         ],
+         "sender": {
+           "reference": "Organization/OM",
+           "display": "Ordem dos Médicos"
+         },
+         "source": {
+           "name": "OM",
+           "endpoint": "OM/ROPM"
+         },
+         "focus": [
+           {
+             "reference": "Practitioner/26148204-1432-4ae4-a1d7-7a60c3e03615"
+           }
+         ]
+       }
+     },
+     {
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/Practitioner/26148204-1432-4ae4-a1d7-7a60c3e03615",
+       "resource": {
+         "resourceType": "Practitioner",
+         "id": "26148204-1432-4ae4-a1d7-7a60c3e03615",
+         "meta": {
+           "profile": [
+             "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/PractitionerPTOPSNC"
+           ]
+         },
+         "identifier": [
+           {
+             "type": {
+               "coding": [
+                 {
+                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                   "code": "MD",
+                   "display": "Medical License number"
+                 }
+               ],
+               "text": "Número da Cédula Profissional do Médico"
+             },
+             "system": "https://ordemdosmedicos.pt/pt",
+             "value": "12345"
+           }
+         ],
+         "active": true,
+         "name": [
+           {
+             "use": "usual",
+             "text": "João da Silva"
+           }
+         ],
+         "telecom": [
+           {
+             "system": "email",
+             "value": "joao.silva@example.com",
+             "use": "work",
+             "rank": 1
+           }
+         ],
+         "qualification": [
+           {
+             "extension": [
+               {
+                 "extension": [
+                   {
+                     "url": "status",
+                     "valueCodeableConcept": {
+                       "coding": [
+                         {
+                           "system": "http://snomed.info/sct",
+                           "code": "255594003",
+                           "display": "Complete"
+                         }
+                       ],
+                       "text": "Concluído"
+                     }
+                   }
+                 ],
+                 "url": "https://spms.min-saude.pt/fhir/iop/extensions/qualificationPTExtension"
+               }
+             ],
+             "code": {
+               "code": {
+                 "id": "professionalTitle",
+                 "coding": [
+                   {
+                     "system": "http://snomed.info/sct",
+                     "code": "309343006",
+                     "display": "Médico"
+                   }
+                 ],
+                 "text": "Médico"
+               }
+             }
+           }
+         ]
+       }
+     },
+     {
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/Organization/Organization/SPMS",
+       "resource": {
+         "resourceType": "Organization",
+         "id": "Organization/SPMS",
+         "meta": {
+           "lastUpdated": "2026-08-25T15:57:41.243Z",
+           "profile": [
+             "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
+           ]
+         },
+         "identifier": [
+           {
+             "type": {
+               "coding": [
+                 {
+                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                   "code": "TAX",
+                   "display": "Tax ID Number"
+                 }
+               ],
+               "text": "Número de Identificação de Pessoa Coletiva"
+             },
+             "system": "https://www.portaldasfinancas.gov.pt",
+             "value": "509540716"
+           }
+         ],
+         "name": "Serviços Partilhados do Ministério da Saúde"
+       }
+     },
+     {
+       "fullUrl": "https://spms.min-saude.pt/fhir-r4B/Organization/Organization/Organization/OM",
+       "resource": {
+         "resourceType": "Organization",
+         "id": "Organization/OM",
+         "meta": {
+           "lastUpdated": "2026-08-25T15:57:41.243Z",
+           "profile": [
+             "https://spms.min-saude.pt/fhir-r4B/iop/StructureDefinition/OrganizationPTTRV"
+           ]
+         },
+         "identifier": [
+           {
+             "type": {
+               "coding": [
+                 {
+                   "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                   "code": "TAX",
+                   "display": "Tax ID Number"
+                 }
+               ],
+               "text": "Número de Identificação de Pessoa Coletiva"
+             },
+             "system": "https://www.portaldasfinancas.gov.pt",
+             "value": "undefined"
+           }
+         ],
+         "name": "Ordem dos Médicos"
+       }
+     }
+   ]
+ }

@@ -519,7 +519,7 @@ function buildMessageHeader({
 
                 receiver: {
                     reference:
-                        `Organization/${receiverOrganizationId}`,
+                        `${receiverOrganizationId}`,
 
                     display:
                         receiverOrganizationName
@@ -529,7 +529,7 @@ function buildMessageHeader({
 
         sender: {
             reference:
-                `Organization/${senderOrganizationId}`,
+                `${senderOrganizationId}`,
 
             display:
                 senderOrganizationName

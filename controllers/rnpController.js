@@ -44,7 +44,7 @@ async function enviarProfissional(req, res) {
         const bundle = buildBundle(profissional);
 
         // Descomentar para ver o bundle FHIR construído no console para debug
-        //console.log("Bundle FHIR construído:", JSON.stringify(bundle, null, 2));
+        console.log("Bundle FHIR construído:", JSON.stringify(bundle, null, 2));
         
         // -------------------------------------------------
         // 3. Enviar para o RNP / SPMS

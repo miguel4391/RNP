@@ -1,231 +1,143 @@
 const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
-const qs = require("querystring");
+const qs = require("qs");
 
-const TOKEN_FILE = path.join(__dirname, "../config/token.json");
+const {
+    lerToken,
+    guardarToken
+} = require("../models/rnpToken");
 
-
-/**
- * Lê o token guardado em ficheiro
- */
-function lerToken() {
-
-    try {
-
-        if (!fs.existsSync(TOKEN_FILE)) {
-            return null;
-        }
-
-        const conteudo = fs.readFileSync(TOKEN_FILE, "utf8");
-
-        if (!conteudo.trim()) {
-            return null;
-        }
-
-        return JSON.parse(conteudo);
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao ler ficheiro de token:",
-            error.message
-        );
-
-        return null;
-    }
-}
+const rnpConfig = require("../config/rnp");
 
 
-/**
- * Guarda o token em ficheiro
- */
-function guardarToken(tokenData) {
-
-    const dados = {
-        ...tokenData,
-
-        // Momento em que o token foi obtido
-        obtido_em: new Date().toISOString()
-    };
-
-    fs.writeFileSync(
-        TOKEN_FILE,
-        JSON.stringify(dados, null, 2),
-        "utf8"
-    );
-
-    return dados;
-}
-
-
-/**
- * Verifica se o access_token ainda é válido
- *
- * Utilizamos uma margem de segurança de 60 segundos.
- */
-function tokenValido(tokenData) {
-
-    if (!tokenData) {
-        return false;
-    }
-
-    if (!tokenData.access_token) {
-        return false;
-    }
-
-    if (!tokenData.expires_in) {
-        return false;
-    }
-
-    if (!tokenData.obtido_em) {
-        return false;
-    }
-
-    const obtidoEm =
-        new Date(tokenData.obtido_em).getTime();
-
-    const validade =
-        obtidoEm + (Number(tokenData.expires_in) * 1000);
-
-    const agora = Date.now();
-
-    // Margem de segurança: 60 segundos
-    return agora < (validade - 60000);
-}
-
-
-/**
- * Obtém o primeiro token utilizando
- * username + password
- */
-async function obterNovoToken() {
-
-    const dados = {
-        grant_type: "password",
-        username: process.env.RNP_USERNAME,
-        password: process.env.RNP_PASSWORD,
-        client_id: process.env.RNP_CLIENT_ID,
-        client_secret: process.env.RNP_CLIENT_SECRET,
-        scope: process.env.RNP_SCOPE
-    };
-
-    try {
-
-        const response = await axios.post(
-            process.env.RNP_TOKEN_URL,
-            qs.stringify(dados),
-            {
-                headers: {
-                    "Content-Type":
-                        "application/x-www-form-urlencoded"
-                }
-            }
-        );
-
-        return guardarToken(response.data);
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao obter novo token:",
-            error.response?.data || error.message
-        );
-
-        throw error;
-    }
-}
-
-
-/**
- * Obtém um novo access_token utilizando
- * o refresh_token existente
- */
-async function renovarToken(refreshToken) {
-
-    const dados = {
-        grant_type: "refresh_token",
-        refresh_token: refreshToken,
-        client_id: process.env.RNP_CLIENT_ID,
-        client_secret: process.env.RNP_CLIENT_SECRET
-    };
-
-    try {
-
-        const response = await axios.post(
-            process.env.RNP_TOKEN_URL,
-            qs.stringify(dados),
-            {
-                headers: {
-                    "Content-Type":
-                        "application/x-www-form-urlencoded"
-                }
-            }
-        );
-
-        return guardarToken(response.data);
-
-    } catch (error) {
-
-        console.error(
-            "Erro ao renovar token:",
-            error.response?.data || error.message
-        );
-
-        throw error;
-    }
-}
-
-
-/**
- * Função principal utilizada pelo rnpService
- */
 async function obterAccessToken() {
 
-    const tokenData = lerToken();
+    const tokenGuardado = await lerToken();
 
+    // ---------------------------------------------------------
+    // 1. Temos token guardado?
+    // ---------------------------------------------------------
 
-    // --------------------------------------------------
-    // 1. Temos um access_token válido
-    // --------------------------------------------------
+    if (tokenGuardado) {
 
-    if (tokenValido(tokenData)) {
+        const agora = Date.now();
 
-        return tokenData.access_token;
+        const obtidoEm = new Date(
+            tokenGuardado.obtido_em
+        ).getTime();
+
+        const validadeMs =
+            tokenGuardado.expires_in * 1000;
+
+        const expiraEm =
+            obtidoEm + validadeMs;
+
+        // Margem de segurança de 60 segundos
+        const margem = 60 * 1000;
+
+        if (agora < (expiraEm - margem)) {
+
+            console.log(
+                "Token existente na BD ainda é válido."
+            );
+
+            return tokenGuardado.access_token;
+        }
     }
 
 
-    // --------------------------------------------------
-    // 2. O access_token expirou mas temos refresh_token
-    // --------------------------------------------------
+    // ---------------------------------------------------------
+    // 2. Token inexistente ou expirado
+    //    Tentar refresh token
+    // ---------------------------------------------------------
 
-    if (tokenData?.refresh_token) {
+    if (
+        tokenGuardado &&
+        tokenGuardado.refresh_token
+    ) {
 
         try {
 
-            const novoToken =
-                await renovarToken(tokenData.refresh_token);
+            console.log(
+                "Token expirado. A obter novo token através do refresh token..."
+            );
+
+            const response = await axios.post(
+                rnpConfig.tokenUrl,
+                qs.stringify({
+                    grant_type: "refresh_token",
+                    refresh_token: tokenGuardado.refresh_token,
+                    client_id: process.env.RNP_CLIENT_ID,
+                    client_secret: process.env.RNP_CLIENT_SECRET
+                }),
+                {
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    }
+                }
+            );
+
+            const novoToken = await guardarToken(
+                response.data
+            );
+
+            console.log(
+                "Novo token obtido através do refresh token."
+            );
 
             return novoToken.access_token;
 
         } catch (error) {
 
-            console.warn(
-                "Não foi possível utilizar o refresh_token."
+            console.error(
+                "Erro ao renovar token:",
+                error.response?.data || error.message
             );
 
-            // Continua para obter um novo token
-            // através de username/password
+            // Se o refresh falhar, vamos tentar
+            // obter um token inicial novamente.
         }
     }
 
 
-    // --------------------------------------------------
-    // 3. Não temos token ou o refresh falhou
-    // --------------------------------------------------
+    // ---------------------------------------------------------
+    // 3. Primeiro token
+    // ---------------------------------------------------------
 
-    const novoToken =
-        await obterNovoToken();
+    console.log(
+        "A obter primeiro token através de username/password..."
+    );
+
+    const response = await axios.post(
+        rnpConfig.tokenUrl,
+        qs.stringify({
+            grant_type: "password",
+            username: process.env.RNP_USERNAME,
+            password: process.env.RNP_PASSWORD,
+            client_id: process.env.RNP_CLIENT_ID,
+            client_secret: process.env.RNP_CLIENT_SECRET,
+            scope: process.env.RNP_SCOPE
+        }),
+        {
+            headers: {
+                "Content-Type":
+                    "application/x-www-form-urlencoded"
+            }
+        }
+    );
+
+
+    // ---------------------------------------------------------
+    // 4. Guardar novo token na BD
+    // ---------------------------------------------------------
+
+    const novoToken = await guardarToken(
+        response.data
+    );
+
+    console.log(
+        "Primeiro token obtido e guardado na BD."
+    );
 
     return novoToken.access_token;
 }
