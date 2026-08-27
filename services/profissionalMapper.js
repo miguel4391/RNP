@@ -127,9 +127,9 @@ function formatDate(value) {
 /**
  * Cria uma codificação SNOMED.
  */
-function snomed(code, display) {
+function snomed(code, nome, display) {
 
-    if (!code && !display) {
+    if (!code && !nome) {
         return undefined;
     }
 
@@ -141,7 +141,7 @@ function snomed(code, display) {
                 display
             })
         ],
-        text: display
+        text: nome
     };
 }
 
@@ -149,16 +149,16 @@ function snomed(code, display) {
 /**
  * Cria o bloco code de uma qualificação.
  */
-function qualificationCode(id, code, display) {
+function qualificationCode(id, code, nome, display) {
 
-    if (!code && !display) {
+    if (!code && !nome) {
         return undefined;
     }
 
     return {
         code: {
             id,
-            ...snomed(code, display)
+            ...snomed(code, nome, display)
         }
     };
 }
@@ -320,61 +320,60 @@ function buildPractitioner(r, practitionerId) {
     // --------------------------------------------------------
     // Especialidade
     // --------------------------------------------------------
-
-    if (
-        r.especialidadeCodigo ||
-        r.especialidadeDescricao
-    ) {
-
-        qualification.push(
-            qualificationCode(
-                "medicalSpecialty",
-                r.especialidadeCodigo,
-                r.especialidadeDescricao,
-                r.especialidadeDescricaoEng
-            )
-        );
+    
+    if(r.especialidades && Array.isArray(r.especialidades)) {
+        r.especialidades.forEach((especialidade) => {
+            if (especialidade.codSPMS || especialidade.nome) {
+                qualification.push(
+                    qualificationCode(
+                        "medicalSpecialty",
+                        especialidade.codSPMS,
+                        especialidade.nome,
+                        especialidade.nomeEng
+                    )
+                );
+            }
+        })
     }
-
 
     // --------------------------------------------------------
     // Subespecialidade
     // --------------------------------------------------------
 
-    if (
-        r.subEspecialidadeCodigo ||
-        r.subEspecialidadeDescricao
-    ) {
-
-        qualification.push(
-            qualificationCode(
-                "medicalSubSpecialty",
-                r.subEspecialidadeCodigo,
-                r.subEspecialidadeDescricao,
-                r.subEspecialidadeDescricaoEng
-            )
-        );
+    if(r.subespecialidades && Array.isArray(r.subespecialidades)) {
+        r.subespecialidades.forEach((subespecialidade) => {
+            if (subespecialidade.codSPMS || subespecialidade.nome) {
+                qualification.push(
+                    qualificationCode(
+                        "medicalSubSpecialty",
+                        subespecialidade.codSPMS,
+                        subespecialidade.nomeSubespecialidade,
+                        subespecialidade.nomeEng
+                    )
+                );
+            }
+        })
     }
-
 
     // --------------------------------------------------------
     // Competência
     // --------------------------------------------------------
 
-    /* if (
-        r.competenciaCodigo ||
-        r.competenciaDescricao
-    ) {
-
-        qualification.push(
-            qualificationCode(
-                "medicalCompetence",
-                r.competenciaCodigo,
-                r.competenciaDescricao,
-                r.competenciaDescricaoEng
-            )
-        );
-    } */
+    
+    if(r.competencias && Array.isArray(r.competencias)) {
+        r.competencias.forEach((competencia) => {
+            if (competencia.codSPMS || competencia.nome) {
+                qualification.push(
+                    qualificationCode(
+                        "medicalCompetence",
+                        competencia.codSPMS,
+                        competencia.nome,
+                        competencia.nomeEng
+                    )
+                );
+            }
+        })
+    }
 
 
     return removeEmpty({
