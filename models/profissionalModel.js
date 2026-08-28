@@ -47,13 +47,13 @@ async function getProfissional(idMedico) {
         SELECT
             s.idsubespecialidade,
             s.codSPMS,
-            s.nomeSubespecialidade,
+            s.nome,
             s.nomeEng
         FROM tr_med_sub ms
         INNER JOIN subespecialidade s
             ON s.idsubespecialidade = ms.idSubEspecialidade
         WHERE ms.idMedico = ? and s.estado like '0'
-        ORDER BY s.nomeSubespecialidade
+        ORDER BY s.nome
         `,
         [idMedico]
     );
