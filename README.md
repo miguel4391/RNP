@@ -4,16 +4,16 @@ API Node.js para:
 
 1. Receber o identificador de um profissional da Área Pessoal.
 2. Obter os dados na base de dados MySQL.
-3. Validar a consistência dos dados.
-4. Construir o XML SOAP.
+3. Construir o Json a enviar.
+4. Gerir o token para efetuar pedidos .
 5. Enviar o pedido para o Web Service RNP/SPMS.
-6. Interpretar a resposta e devolver o resultado à aplicação chamadora.
+6. Interpretar a resposta e devolver o resultado <à aplicação chamadora>.
 
 ## Requisitos
 
 - Node.js 20+ recomendado
 - MySQL
-- Acesso ao endpoint SOAP do RNP/SPMS
+- Acesso ao endpoint SOAP do RNP/SPMS (IP tem de constar na Whitelist)
 
 ## Instalação
 

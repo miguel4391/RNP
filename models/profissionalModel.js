@@ -12,7 +12,7 @@ async function getProfissional(idMedico) {
             nrCedula,
             email,
             dtaNasc
-        FROM medico
+        FROM medicos
         WHERE nrCedula = ?
         `,
         [idMedico]
