@@ -6,14 +6,14 @@ async function getProfissional(idMedico) {
     const [medicos] = await db.query(
         `
         SELECT
-            idMedico,
-            nome,
+            nome_clinico,
             nif,
-            nrCedula,
-            email,
-            dtaNasc
+            cedula,
+            email_81,
+            data_nascimento,
+            data_inscricao
         FROM medicos
-        WHERE nrCedula = ?
+        WHERE cod_sitc < 7 AND cedula = ?
         `,
         [idMedico]
     );

@@ -288,12 +288,10 @@ function buildPractitioner(r, practitionerId) {
             text: "Número da Cédula Profissional do Médico"
         },
         system: "https://ordemdosmedicos.pt/pt",
-        value: String(r.nrCedula),
+        value: String(r.cedula),
         period: {
             start:
-                formatDate(r.dataInscricaoOrdem) ||
-                formatDate(r.dataInicioCedula),
-            end: formatDate(r.dataFimCedula)
+                formatDate(r.data_inscricao) 
         }
     };
 
